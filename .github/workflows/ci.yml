@@ -6,7 +6,9 @@ env:
   GODOT_VERSION: 3.3.3
   
 # Controls when the workflow will run
-on: push
+on: 
+  push:
+    branches: gh-pages
   # Triggers the workflow on push or pull request events but only for the main branch
    
   # push:
