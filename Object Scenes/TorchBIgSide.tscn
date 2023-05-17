@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Object Images/LightsPillars.png" type="Texture" id=1]
+[ext_resource path="res://2DWhite.png" type="Texture" id=2]
+
+[node name="TorchBIgSide" type="StaticBody2D"]
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+color = Color( 1, 0.988235, 0.682353, 1 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.862745 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -5, 9, -4, 8, 3, 8, 3, 13, 2, 14, -2, 14, -4, 13, -5, 12 )

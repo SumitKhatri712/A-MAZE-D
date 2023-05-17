@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://2DWhite.png" type="Texture" id=1]
+[ext_resource path="res://Player/NinjaRed-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/HitBox.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.9
+loop = true
+step = 0.125
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 20, 21, 22, 22 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.71431
+height = 8.57139
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 11.4286
+height = 11.4285
+
+[node name="NinjaPlayer" type="KinematicBody2D" groups=[
+"Player",
+]]
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 23
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 1 )
+anims/Run = SubResource( 2 )
+anims/Walk = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+show_behind_parent = true
+position = Vector2( -1.42857, -7.14286 )
+texture = ExtResource( 1 )
+texture_scale = 0.3
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.862745 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.42857, 8.57143 )
+rotation = -1.5708
+z_index = 1
+shape = SubResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HitBox" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1.42857, -4.28571 )
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 2.85714, 4.28571 )
+shape = SubResource( 5 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 2.85716, 2.85713 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_editor_description_": ""
+}
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+
+[editable path="HitBox"]

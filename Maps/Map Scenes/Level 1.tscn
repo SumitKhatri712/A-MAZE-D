@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/Scenes/CanvasLayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Object Scenes/BigLog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Object Scenes/BigRock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Object Scenes/Lamp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Object Scenes/SmallRock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Object Scenes/Bench.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/TopDownMap.json" type="PackedScene" id=7]
+[ext_resource path="res://Object Scenes/Bonfire.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Key.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Player/Golem.tscn" type="PackedScene" id=12]
+
+[node name="World" type="Node2D"]
+position = Vector2( 0, -8 )
+
+[node name="TopDownMap" parent="." instance=ExtResource( 7 )]
+position = Vector2( 695, -255 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 1 )]
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 696, -251 )
+
+[node name="Golem" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( -520, 315 )
+
+[node name="Objects" type="YSort" parent="YSort"]
+position = Vector2( 0, -4 )
+
+[node name="Portal" parent="YSort/Objects" instance=ExtResource( 9 )]
+position = Vector2( 534, 311 )
+NextScenePath = "res://Maps/Map Scenes/Level 2.tscn"
+
+[node name="Lamp" parent="YSort/Objects" instance=ExtResource( 4 )]
+position = Vector2( -181, 294 )
+
+[node name="Lamp2" parent="YSort/Objects" instance=ExtResource( 4 )]
+position = Vector2( -354, 212 )
+
+[node name="Lamp3" parent="YSort/Objects" instance=ExtResource( 4 )]
+position = Vector2( -303, 415 )
+
+[node name="Lamp4" parent="YSort/Objects" instance=ExtResource( 4 )]
+position = Vector2( 181, 335 )
+
+[node name="Lamp5" parent="YSort/Objects" instance=ExtResource( 4 )]
+position = Vector2( 225, 146 )
+
+[node name="BigLogs" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( -118, 247 )
+
+[node name="BigLogs2" parent="YSort/Objects" instance=ExtResource( 2 )]
+position = Vector2( 304, 323 )
+
+[node name="BigRock" parent="YSort/Objects" instance=ExtResource( 3 )]
+position = Vector2( -359, 324 )
+
+[node name="BigRock3" parent="YSort/Objects" instance=ExtResource( 3 )]
+position = Vector2( -362, 203 )
+
+[node name="BigRock4" parent="YSort/Objects" instance=ExtResource( 3 )]
+position = Vector2( -155, 420 )
+
+[node name="BigRock2" parent="YSort/Objects" instance=ExtResource( 3 )]
+position = Vector2( 469, 323 )
+
+[node name="Bonfire" parent="YSort/Objects" instance=ExtResource( 8 )]
+position = Vector2( -44, 366 )
+
+[node name="Bonfire2" parent="YSort/Objects" instance=ExtResource( 8 )]
+position = Vector2( 488, 274 )
+
+[node name="Bonfire3" parent="YSort/Objects" instance=ExtResource( 8 )]
+position = Vector2( 491, 364 )
+
+[node name="Bench" parent="YSort/Objects" instance=ExtResource( 6 )]
+position = Vector2( -397, 300 )
+
+[node name="Bench2" parent="YSort/Objects" instance=ExtResource( 6 )]
+position = Vector2( -109, 369 )
+
+[node name="Bench3" parent="YSort/Objects" instance=ExtResource( 6 )]
+position = Vector2( 83, 300 )
+
+[node name="Bench4" parent="YSort/Objects" instance=ExtResource( 6 )]
+position = Vector2( 239, 253 )
+
+[node name="SmallRock3" parent="YSort/Objects" instance=ExtResource( 5 )]
+position = Vector2( -244, 325 )
+z_index = 1
+
+[node name="SmallRock" parent="YSort/Objects" instance=ExtResource( 5 )]
+position = Vector2( 85, 324 )
+
+[node name="SmallRock2" parent="YSort/Objects" instance=ExtResource( 5 )]
+position = Vector2( 321, 277 )
+z_index = 1
+
+[node name="Key" parent="YSort/Objects" instance=ExtResource( 11 )]
+position = Vector2( -417, 131 )
+
+[node name="Key2" parent="YSort/Objects" instance=ExtResource( 11 )]
+position = Vector2( -88, 252 )
+
+[node name="Key3" parent="YSort/Objects" instance=ExtResource( 11 )]
+position = Vector2( 306, 468 )

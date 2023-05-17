@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sounds/new.wav" type="AudioStream" id=1]
+
+[node name="Node2D" type="Node2D"]
+pause_mode = 2
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." groups=[
+"Music",
+]]
+stream = ExtResource( 1 )
+volume_db = -10.0
+autoplay = true
+bus = "Music"
